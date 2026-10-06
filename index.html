@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>牛角村不吹牛 · 家乡文化调查结果展示</title>
+<style>
+/* SECTION: base */
+:root{
+  --ink:#103A2A; --ink-deep:#0E2620; --green:#6FA287; --green-soft:#4E7D66;
+  --gold:#E4B95B; --brick:#B5473B; --paper:#FFFFFF; --bg:#EEF6F4; --body:#273B33; --muted:#5C7168;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Microsoft YaHei","微软雅黑",sans-serif;color:var(--body);background:linear-gradient(180deg,#EEF6F4 0%,#CBE2D2 100%);line-height:1.75}
+img{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h2{font-size:clamp(22px,3.4vw,30px);color:var(--ink);letter-spacing:1px}
+.kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:4px;color:var(--brick);margin-bottom:6px}
+.rule{width:56px;height:3px;background:var(--gold);margin:14px 0 26px}
+section{padding:72px 0}
+/* SECTION: nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(14,38,32,.92);backdrop-filter:blur(6px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{color:#fff;font-weight:700;letter-spacing:2px;font-size:16px}
+.logo em{color:var(--gold);font-style:normal}
+.links{display:flex;gap:22px;flex-wrap:wrap}
+.links a{color:#DDEBE2;text-decoration:none;font-size:14px;padding:4px 2px;border-bottom:2px solid transparent}
+.links a:hover,.links a.on{color:var(--gold);border-color:var(--gold)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+/* SECTION: hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;color:#fff;overflow:hidden;padding:96px 0}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,38,32,.86) 0%,rgba(14,38,32,.55) 45%,rgba(14,38,32,.08) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .tag{font-size:14px;letter-spacing:4px;color:var(--gold)}
+.hero h1{font-size:clamp(34px,6vw,58px);letter-spacing:2px;margin:14px 0 10px;text-shadow:0 2px 10px rgba(14,38,32,.5)}
+.hero .sub{font-size:clamp(16px,2.6vw,23px);color:#EAF4EE}
+.hero .meta{margin-top:34px;font-size:14px;color:#C9DCD2;border-left:3px solid var(--gold);padding-left:14px}
+/* SECTION: cards */
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:rgba(255,255,255,.9);border:1px solid #BFD6C9;border-top:4px solid var(--green-soft);padding:22px 20px}
+.card h3{font-size:16.5px;color:var(--ink);margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--muted)}
+.num{font-size:34px;font-weight:800;color:var(--ink);line-height:1.2}
+.num small{font-size:13px;color:var(--muted);font-weight:400;display:block;margin-top:2px}
+/* SECTION: findings */
+.grpTitle{font-size:18px;font-weight:700;color:var(--paper);background:var(--ink);display:inline-block;padding:7px 22px;margin-bottom:18px;letter-spacing:1px}
+.panel{display:block}
+.panel.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pt{background:rgba(255,255,255,.92);border:1px solid #BFD6C9;padding:26px 28px;margin-bottom:16px;position:relative}
+.pt .no{position:absolute;top:18px;right:22px;font-size:30px;font-weight:800;color:var(--gold)}
+.pt h3{color:var(--ink);font-size:18px;margin-bottom:8px}
+.pt b.hl{color:var(--brick)}
+/* SECTION: survey */
+.qcard{background:rgba(255,255,255,.92);border:1px solid #BFD6C9;padding:22px}
+.qrow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed #BFD6C9;padding:9px 0;font-size:14px}
+.qrow:last-child{border-bottom:0}
+.qrow .v{color:var(--brick);font-weight:700;white-space:nowrap}
+.fill{background:#FDF3D9;border:1px solid var(--gold);padding:2px 10px;font-size:12.5px;color:#8a6a1e}
+/* SECTION: interview */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:26px;align-items:start}
+figure{background:#fff;border:1px solid #BFD6C9;padding:10px}
+figure img{aspect-ratio:4/3;object-fit:cover;width:100%}
+figcaption{font-size:12.5px;color:var(--muted);padding:8px 4px 2px}
+.quote{border-left:4px solid var(--brick);padding:6px 0 6px 18px;font-style:italic;color:var(--body);margin:18px 0}
+/* SECTION: footer */
+footer{background:var(--ink-deep);color:#C9DCD2;padding:54px 0 30px}
+footer .grid{gap:34px}
+footer h4{color:#fff;font-size:16px;margin-bottom:10px}
+footer a{color:var(--gold);text-decoration:none}
+.foot-line{margin-top:36px;padding-top:16px;border-top:1px solid rgba(201,220,210,.25);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+/* SECTION: responsive */
+@media (max-width:820px){
+  .links{display:none;position:absolute;top:58px;left:0;right:0;background:rgba(14,38,32,.97);flex-direction:column;padding:14px 24px;gap:12px}
+  .links.open{display:flex}
+  .burger{display:block}
+  .g3,.g2,.split{grid-template-columns:1fr}
+  .hero::after{background:linear-gradient(180deg,rgba(14,38,32,.75) 0%,rgba(14,38,32,.45) 100%)}
+  section{padding:52px 0}
+}
+</style>
+</head>
+<body>
 
+<!-- SECTION: nav -->
+<nav>
+  <div class="wrap">
+    <div class="logo">牛角村<em>不吹牛</em></div>
+    <button class="burger" id="burger" aria-label="菜单">☰</button>
+    <div class="links" id="links">
+      <a href="#hero">首页</a>
+      <a href="#q1">核心发现</a>
+      <a href="#survey">问卷数据</a>
+      <a href="#interview">采访记录</a>
+      <a href="#end">结语</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SECTION: hero -->
+<div class="hero" id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="wrap">
+    <div class="tag">家乡文化调查 · 综合实践活动</div>
+    <h1>牛角村不吹牛</h1>
+    <div class="sub">一头"哞哞"如何犁出农文旅黄金三角？</div>
+    <div class="meta">江苏省宿迁市宿城区蔡集镇 · 牛角村欢乐田园度假区<br>2604-蔡梓言 及小组同学 · 2026 年秋</div>
+  </div>
+</div>
+
+<!-- SECTION: overview -->
+<section id="ov">
+  <div class="wrap">
+    <span class="kicker">调查对象</span>
+    <h2>一个村庄的两道"必答题"</h2>
+    <div class="rule"></div>
+    <div class="grid g3">
+      <div class="card"><div class="num">2800<small>亩 · 度假区规划面积</small></div><p style="margin-top:8px">无边泳池、稻田书店、恒温水乐园、农场俱乐部等十余个项目，集"吃住行游购娱"全业态于一体。</p></div>
+      <div class="card"><div class="num">13万+<small>人次 · 2025 年暑期接待游客</small></div><p style="margin-top:8px">全市最热门打卡地，抖音本地榜单连夺"景点人气""亲子出游""主题乐园"多个第一。</p></div>
+      <div class="card"><div class="num">188万<small>元 · 一个暑期住宿营收</small></div><p style="margin-top:8px">"民宿+"让游客从走马观花变成深度体验，房价 1888 元仍一房难求。</p></div>
+    </div>
+    <p style="margin-top:22px;font-size:14.5px;color:var(--muted)">我们带着两个问题走进牛角村：<b style="color:var(--ink)">房价 1888 元、需提前一周预约，为什么还一房难求？萌狮互动为什么能吸引游客专程驱车 1000 公里？</b>下面是问卷、采访与资料整理的完整结果。</p>
+  </div>
+</section>
+
+<!-- SECTION: questions (tabs) -->
+<section id="q1" style="background:rgba(255,255,255,.45)">
+  <div class="wrap">
+    <span class="kicker">核心发现</span>
+    <h2>两道题，一个答案：看见变了的人</h2>
+    <div class="rule"></div>
+    <h3 class="grpTitle">探究一 · 房价 1888 为何一房难求</h3>
+    <div class="panel" id="t1">
+      <div class="pt"><span class="no">01</span><h3>住宿本身就是目的地</h3>
+        <p>牛角村最精明的设计，是把"住宿"做成了度假目的地本身，而不是逛完景区回来睡觉的地方。住进去之后，你不是"去景点"，你是<b class="hl">住在景点里面</b>。</p></div>
+      <div class="pt"><span class="no">02</span><h3>从"特种兵式旅游"到"慢充式旅游"</h3>
+        <p>年轻人不再问"我看过多少地方"，而是问"我获得了怎样的内心体验"。同程旅行数据：乡村精品民宿预订同比<b class="hl">增长 32%</b>，2 晚及以上连住订单占比提升 <b class="hl">11 个百分点</b>。年轻人不是不愿意花钱，是不愿意花了钱还赶路。</p></div>
+      <div class="pt"><span class="no">03</span><h3>"半小时车程换个活法"的附近性</h3>
+        <p>度假区北临 250 省道、东接 324 省道，离市区仅二三十分钟车程。不花机票钱、不请年假、不做三天攻略，开车半小时就能"换一种活法"——省下的交通与时间成本，自然转化为对住宿溢价的接受度。</p></div>
+    </div>
+
+    <h3 class="grpTitle" style="margin-top:38px">追问二 · 萌狮互动为何受欢迎</h3>
+    <div class="panel" id="t2">
+      <div class="pt"><span class="no">01</span><h3>猎奇心理："潘多拉效应"下的安全冒险</h3>
+        <p>越是被禁止、越是危险的东西，人越想碰一碰。哪怕幼狮还在嘬奶嘴，"狮子"两个字自带的威慑力足以让人肾上腺素飙升。游客买的不是 7 分钟互动，而是<b class="hl">"我摸过狮子"这个事实本身</b>。</p></div>
+      <div class="pt"><span class="no">02</span><h3>确定性中的"失控感"</h3>
+        <p>工作有 KPI、生活有日程，连外卖迟到五分钟都会让人焦躁。一头小狮子被牵进房间，是一种安全的"失控"：它离谱、它打破你对"叫早服务"的所有认知，但后果最多是被舔一脸口水——<b class="hl">低成本的意外，成了释放压力的出口</b>。</p></div>
+      <div class="pt"><span class="no">03</span><h3>运营方的赛道嗅觉</h3>
+        <p>社区发展总体呈下行趋势，宠物经济却逐渐上行。瞄准 4—14 岁爱宠物的孩子，用近距离打卡的新奇感增强互动，吸引大量本市与外市游客，今年更有游客<b class="hl">专程驱车 1000 公里</b>只为与幼狮互动。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: survey -->
+<section id="survey">
+  <div class="wrap">
+    <span class="kicker">问卷数据</span>
+    <h2>游客怎么说 <span class="fill">已回收 26 份有效问卷</span></h2>
+    <div class="rule"></div>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:22px">本次实践配套发放《牛角村游客调查问卷》（20 题，含基本信息、住宿体验、萌狮互动、整体评价四部分），回收有效问卷 26 份，其中 73.1% 有过住宿经历；受访者 100% 单程 1 小时内到达，53.8% 以亲子出行为主，样本与"半小时度假圈"的定位高度吻合。</p>
+    <div class="grid g2">
+      <div class="qcard">
+        <h3 style="color:var(--ink);font-size:16px;margin-bottom:6px">住宿体验（问卷第 5—11 题）</h3>
+        <div class="qrow"><span>回收有效问卷</span><span class="v">26 份</span></div>
+        <div class="qrow"><span>需提前一周以上才能订到（第 6 题）</span><span class="v">19.2%</span></div>
+        <div class="qrow"><span>住宿者中需提前 3 天以上预订（第 6 题）</span><span class="v">78.9%</span></div>
+        <div class="qrow"><span>接受 500—1000 元档房价（第 7 题）</span><span class="v">57.7%</span></div>
+        <div class="qrow"><span>将"住在景区里面"列入选择原因（第 8 题）</span><span class="v">15.4%</span></div>
+        <div class="qrow"><span>计划连住 2 晚及以上（第 9 题）</span><span class="v">7.7%</span></div>
+        <div class="qrow"><span>性价比评分均值（5 分制，第 10 题）</span><span class="v">3.95 分</span></div>
+        <div class="qrow"><span>认同"放空式度假"并愿付费（第 11 题）</span><span class="v">76.9%</span></div>
+      </div>
+      <div class="qcard">
+        <h3 style="color:var(--ink);font-size:16px;margin-bottom:6px">萌狮互动（问卷第 12—16 题）</h3>
+        <div class="qrow"><span>亲身参与过互动（第 12 题）</span><span class="v">46.2%</span></div>
+        <div class="qrow"><span>吸引因素提及率最高："想体验新鲜刺激"（第 13 题）</span><span class="v">73.1%</span></div>
+        <div class="qrow"><span>认为值得 300 元以上（第 14 题）</span><span class="v">50.0%</span></div>
+        <div class="qrow"><span>愿意推荐给亲友（第 15 题）</span><span class="v">88.5%</span></div>
+        <div class="qrow"><span>对安全与动物福利有顾虑（第 15 题）</span><span class="v">15.4%</span></div>
+        <div class="qrow"><span>支持景区引入此类创新（第 16 题）</span><span class="v">73.1%</span></div>
+        <div class="qrow"><span>无人明确反对（第 16 题）</span><span class="v">0%</span></div>
+      </div>
+      <div class="qcard">
+        <h3 style="color:var(--ink);font-size:16px;margin-bottom:6px">整体评价（问卷第 17—20 题）</h3>
+        <div class="qrow"><span>获知渠道第一：抖音（第 17 题）</span><span class="v">69.2%</span></div>
+        <div class="qrow"><span>其次是小红书 / 亲友推荐（第 17 题）</span><span class="v">65.4% / 57.7%</span></div>
+        <div class="qrow"><span>最希望加强的业态：星空露营（第 18 题）</span><span class="v">84.6%</span></div>
+        <div class="qrow"><span>温泉/水乐园升级 / 更多萌宠（第 18 题）</span><span class="v">53.8% / 50.0%</span></div>
+        <div class="qrow"><span>一定会推荐给外地朋友（第 19 题）</span><span class="v">76.9%</span></div>
+        <div class="qrow"><span>其余受访者表示"可能会"（第 19 题）</span><span class="v">23.1%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: interview -->
+<section id="interview" style="background:rgba(255,255,255,.45)">
+  <div class="wrap">
+    <span class="kicker">一手材料</span>
+    <h2>采访记录：运营者眼中的牛角村</h2>
+    <div class="rule"></div>
+    <div class="split">
+      <div>
+        <figure><img id="imgInterview" alt="在牛角社区新时代文明实践站实地采访"><figcaption>实地采访度假区运营负责人（牛角社区新时代文明实践站）</figcaption></figure>
+        <figure style="margin-top:18px"><img id="imgManuscript" alt="采访手稿照片"><figcaption>采访手稿（节选）</figcaption></figure>
+      </div>
+      <div>
+        <h3 style="color:var(--ink);font-size:17px">问：下个"爆点"会是什么？</h3>
+        <div class="quote">社区发展总体呈下行趋势，宠物经济却逐渐上行——萌狮互动由此提出。针对不同人群尽力提供不同场景，敢于创新，也确实看见了显著成效，我们有信心把它打造成牛角村下个爆点。</div>
+        <h3 style="color:var(--ink);font-size:17px">问：为什么能吸引这么多游客？</h3>
+        <div class="quote">不同的消费需求导致的。年轻人厌倦城市快节奏，以乡村自然风光与慢节奏为潮流。"穷则变，变则通"——我们根据网络平台留言反馈做了小调整，推进二期发展，抓住数量庞大的年轻人群体。我认为这是城乡经济未来发展方向规划的一个巨大差异。</div>
+        <p style="font-size:13.5px;color:var(--muted)">* 引文据采访手稿整理，个别口语表述已作书面化处理。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: end -->
+<section id="end">
+  <div class="wrap">
+    <span class="kicker">结语</span>
+    <h2>把村庄过成目的地</h2>
+    <div class="rule"></div>
+    <div class="split" style="grid-template-columns:7fr 5fr">
+      <div style="align-self:center">
+        <p style="font-size:15.5px">一头牛，带火一个村。"一房难求"与"萌狮出圈"的背后是同一件事：<b style="color:var(--ink)">看见变了的人</b>——愿意为慢生活付费，乐于为新奇体验出发。从"去远方才有诗"到"半小时车程换个活法"，牛角村给家乡文化调查小组上的最重要一课是：乡村振兴不是把城市搬进农村，而是把农村过成城市人向往的样子。</p>
+      </div>
+      <figure><img id="imgSlogan" alt="牛角社区 博爱家园标语雕塑"><figcaption>牛角社区 · 博爱家园（社区标语雕塑实拍）</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: footer -->
+<footer>
+  <div class="wrap">
+    <div class="grid g3">
+      <div><h4>关于本页</h4><p style="font-size:13.5px">"家乡文化调查"综合实践活动成果展示页，由 2604 蔡梓言所在小组制作。数据来源：实地采访、调查问卷（回收后更新）、公开报道。</p></div>
+      <div><h4>资料来源</h4><p style="font-size:13.5px">宿迁市人民政府网《宿城农文旅融合何以破圈出彩》（2025-09）<br>百度百科"牛角村欢乐田园度假区"词条<br>同程旅行 2025 暑期乡村民宿数据</p></div>
+      <div><h4>配套汇报</h4><p style="font-size:13.5px">《牛角村不吹牛》汇报 PPT（4 页 / 2 分钟）<br>《牛角村游客调查问卷》（20 题）</p></div>
+    </div>
+    <div class="foot-line"><span>© 2026 家乡文化调查小组 · 仅供学习交流</span><span>制作：2604-蔡梓言</span></div>
+  </div>
+</footer>
+
+<script>
+/* SECTION: data */
+const IMAGES = {
+  hero: "https://workspace-cdn.uzone.com/7045e0ab95ef4e00b13606976f90724e%2Fo%2F1791262150723-c.jpg?auth_key=1793854151-0-0-d83571455ab3b6d1b9a53f4445f698a5",
+  interview: "https://workspace-cdn.uzone.com/76df69e75dd646c2bb3a2d1aad791f93%2Fo%2F1791262149703-c.jpg?auth_key=1793854150-0-0-0eeefaa91d1413d47caee32ed66b2512",
+  manuscript: "https://workspace-cdn.uzone.com/9eda758ea3854945ab765ec9db66f676%2Fo%2F1791262151437-c.jpg?auth_key=1793854152-0-0-1d858237698044559f25d33ae1fc4f60",
+  slogan: "https://workspace-cdn.uzone.com/dd4bc89641614e76b106d35f6d26e79f%2Fo%2F1791262149684-c.jpg?auth_key=1793854150-0-0-7e15a1f8cba5137d34d5e467a506963e"
+};
+/* SECTION: runtime image assign */
+document.getElementById("heroBg").style.backgroundImage = "url('" + IMAGES.hero + "')";
+["interview","manuscript","slogan"].forEach(function(k){
+  const el = document.getElementById("img" + k.charAt(0).toUpperCase() + k.slice(1));
+  if (el) { el.src = IMAGES[k]; el.onerror = function(){ el.parentElement.style.background = "linear-gradient(160deg,#DDEBE2,#BFD6C9)"; el.style.display = "none"; }; }
+});
+/* SECTION: mobile menu + active link */
+const burger = document.getElementById("burger"), links = document.getElementById("links");
+burger.addEventListener("click", function(){ links.classList.toggle("open"); });
+links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+const secs = ["hero","q1","survey","interview","end"];
+window.addEventListener("scroll", function(){
+  let cur = "hero";
+  secs.forEach(function(id){ const e = document.getElementById(id); if (e && e.getBoundingClientRect().top < 120) cur = id; });
+  links.querySelectorAll("a").forEach(function(a){ a.classList.toggle("on", a.getAttribute("href") === "#" + cur); });
+});
+</script>
+</body>
+</html>
